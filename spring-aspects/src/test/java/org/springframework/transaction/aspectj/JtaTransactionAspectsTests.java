@@ -164,12 +164,12 @@ public class JtaTransactionAspectsTests {
 			return new CallCountingTransactionManager();
 		}
 
-		@Bean
-		public JtaAnnotationTransactionAspect transactionAspect() {
-			JtaAnnotationTransactionAspect aspect = JtaAnnotationTransactionAspect.aspectOf();
-			aspect.setTransactionManager(transactionManager());
-			return aspect;
-		}
+//		@Bean
+//		public JtaAnnotationTransactionAspect transactionAspect() {
+//			JtaAnnotationTransactionAspect aspect = JtaAnnotationTransactionAspect.aspectOf();
+//			aspect.setTransactionManager(transactionManager());
+//			return aspect;
+//		}
 	}
 
 }

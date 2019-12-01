@@ -62,7 +62,7 @@ public class AnnotationAsyncExecutionAspectTests {
 		Assume.group(TestGroup.PERFORMANCE);
 
 		executor = new CountingExecutor();
-		AnnotationAsyncExecutionAspect.aspectOf().setExecutor(executor);
+//		AnnotationAsyncExecutionAspect.aspectOf().setExecutor(executor);
 	}
 
 
@@ -133,7 +133,7 @@ public class AnnotationAsyncExecutionAspectTests {
 	public void qualifiedAsyncMethodsAreRoutedToCorrectExecutor() throws InterruptedException, ExecutionException {
 		DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
 		beanFactory.registerBeanDefinition("e1", new RootBeanDefinition(ThreadPoolTaskExecutor.class));
-		AnnotationAsyncExecutionAspect.aspectOf().setBeanFactory(beanFactory);
+//		AnnotationAsyncExecutionAspect.aspectOf().setBeanFactory(beanFactory);
 
 		ClassWithQualifiedAsyncMethods obj = new ClassWithQualifiedAsyncMethods();
 
@@ -152,7 +152,7 @@ public class AnnotationAsyncExecutionAspectTests {
 	public void exceptionHandlerCalled() {
 		Method m = ReflectionUtils.findMethod(ClassWithException.class, "failWithVoid");
 		TestableAsyncUncaughtExceptionHandler exceptionHandler = new TestableAsyncUncaughtExceptionHandler();
-		AnnotationAsyncExecutionAspect.aspectOf().setExceptionHandler(exceptionHandler);
+//		AnnotationAsyncExecutionAspect.aspectOf().setExceptionHandler(exceptionHandler);
 		try {
 			assertFalse("Handler should not have been called", exceptionHandler.isCalled());
 			ClassWithException obj = new ClassWithException();
@@ -161,7 +161,7 @@ public class AnnotationAsyncExecutionAspectTests {
 			exceptionHandler.assertCalledWith(m, UnsupportedOperationException.class);
 		}
 		finally {
-			AnnotationAsyncExecutionAspect.aspectOf().setExceptionHandler(defaultExceptionHandler);
+//			AnnotationAsyncExecutionAspect.aspectOf().setExceptionHandler(defaultExceptionHandler);
 		}
 	}
 
@@ -169,7 +169,7 @@ public class AnnotationAsyncExecutionAspectTests {
 	public void exceptionHandlerNeverThrowsUnexpectedException() {
 		Method m = ReflectionUtils.findMethod(ClassWithException.class, "failWithVoid");
 		TestableAsyncUncaughtExceptionHandler exceptionHandler = new TestableAsyncUncaughtExceptionHandler(true);
-		AnnotationAsyncExecutionAspect.aspectOf().setExceptionHandler(exceptionHandler);
+//		AnnotationAsyncExecutionAspect.aspectOf().setExceptionHandler(exceptionHandler);
 		try {
 			assertFalse("Handler should not have been called", exceptionHandler.isCalled());
 			ClassWithException obj = new ClassWithException();
@@ -183,7 +183,7 @@ public class AnnotationAsyncExecutionAspectTests {
 			}
 		}
 		finally {
-			AnnotationAsyncExecutionAspect.aspectOf().setExceptionHandler(defaultExceptionHandler);
+//			AnnotationAsyncExecutionAspect.aspectOf().setExceptionHandler(defaultExceptionHandler);
 
 		}
 	}

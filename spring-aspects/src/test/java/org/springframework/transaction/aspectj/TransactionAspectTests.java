@@ -48,7 +48,7 @@ public class TransactionAspectTests {
 
 	@Before
 	public void initContext() {
-		AnnotationTransactionAspect.aspectOf().setTransactionManager(txManager);
+//		AnnotationTransactionAspect.aspectOf().setTransactionManager(txManager);
 	}
 
 
